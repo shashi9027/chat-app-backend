@@ -14,6 +14,8 @@ const mongosanitize = require("express-mongo-sanitize")
 
 const bodyParser = require("body-parser")
 
+const routes = require("./routes/index")
+
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
@@ -41,6 +43,7 @@ const limiter = rateLimit({
 })
 
 app.use("/tawk", limiter);
+app.use(routes)
 
 // app.use(express.urlencoded({
 //     extended: true
